@@ -64,10 +64,15 @@ public class DataManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        ImportData();
+    }
+
     public void ExportData()
     {
-        string jsonData0 = JsonConvert.SerializeObject(itemDatas);
-        File.WriteAllText(Application.persistentDataPath + "/itemData.json", jsonData0);
+        //string jsonData0 = JsonConvert.SerializeObject(itemDatas);
+        //File.WriteAllText(Application.persistentDataPath + "/itemData.json", jsonData0);
 
         string jsonData1 = JsonConvert.SerializeObject(paperDatas);
         File.WriteAllText(Application.persistentDataPath + "/paperDatas.json", jsonData1);
@@ -80,14 +85,14 @@ public class DataManager : MonoBehaviour
 
     public void ImportData()
     {
-        string data0 = File.ReadAllText(Application.persistentDataPath + "/itemData.json");
-        itemDatas = JsonConvert.DeserializeObject<ItemData[]>(data0);
+        //string data0 = File.ReadAllText(Application.persistentDataPath + "/itemData.json");
+        //itemDatas = JsonConvert.DeserializeObject<ItemData[]>(data0);
 
         string data1 = File.ReadAllText(Application.persistentDataPath + "/paperDatas.json");
-        paperDatas = JsonConvert.DeserializeObject<PaperData[]>(data0);
+        paperDatas = JsonConvert.DeserializeObject<PaperData[]>(data1);
 
         //string data2 = File.ReadAllText(Application.persistentDataPath + "/talkDatas.json");
-        //talkDatas = JsonConvert.DeserializeObject<TalkData[]>(data0);
+        //talkDatas = JsonConvert.DeserializeObject<TalkData[]>(data2);
 
         Debug.Log("데이터 불러오기 완료");
     }

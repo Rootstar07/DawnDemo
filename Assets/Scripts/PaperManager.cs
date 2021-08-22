@@ -78,6 +78,15 @@ public class PaperManager : MonoBehaviour
                     DataManager.instance.paperDatas[code].기록목록[i].기록코드;
             }
         }
+
+        // 기록 리스트 하이라이트 초기화
+        for (int i = 0; i < 기록목록.Length; i++)
+        {
+            if (기록목록[i].activeSelf)
+            {
+                기록목록[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = 기록타입비활성색;
+            }
+        }
     }
 
     public void RecordClick(GameObject target)
